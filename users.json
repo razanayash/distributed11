@@ -1,0 +1,20 @@
+{
+  "razan2gmail.com" : {
+    "email" : "razan2gmail.com",
+    "password" : "razan1",
+    "role" : "employee",
+    "department" : "HR"
+  },
+  "admin@example.com" : {
+    "email" : "admin@example.com",
+    "password" : "admin123",
+    "role" : "admin",
+    "department" : "IT"
+  },
+  "razan@gmail.com" : {
+    "email" : "razan@gmail.com",
+    "password" : "razan1",
+    "role" : "employee",
+    "department" : "HR"
+  }
+}

@@ -1,15 +1,18 @@
 package nodes;
 
-import auth.AuthenticationService;
+import auth.AuthenticationServiceInterface;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 
 public class FileNodeImpl extends UnicastRemoteObject implements FileNode {
     private final Map<String, Map<String, byte[]>> departmentFiles = new HashMap<>();
-    private final AuthenticationService authService;
+    private final AuthenticationServiceInterface authService;
+    private final String name;
 
-    public FileNodeImpl(AuthenticationService authService) throws RemoteException {
+    public FileNodeImpl(String name, AuthenticationServiceInterface authService) throws RemoteException {
+        super();
+        this.name = name;
         this.authService = authService;
     }
 
@@ -52,5 +55,10 @@ public class FileNodeImpl extends UnicastRemoteObject implements FileNode {
     public void syncFiles(Map<String, byte[]> files, String department) throws RemoteException {
         departmentFiles.putIfAbsent(department, new HashMap<>());
         departmentFiles.get(department).putAll(files);
+    }
+
+    @Override
+    public String getName() throws RemoteException {
+        return name;
     }
 }

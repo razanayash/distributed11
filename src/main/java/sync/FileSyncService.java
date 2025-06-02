@@ -22,10 +22,10 @@ public class FileSyncService {
         }
     }private void syncNodes(FileNode source, FileNode target) {
         try {
-            // تجميع الملفات حسب الأقسام
+
             Map<String, Map<String, byte[]>> filesByDepartment = new HashMap<>();
 
-            for (String department : Arrays.asList("IT", "HR", "Finance")) { // أو source.listDepartments() إذا كنت قد أضفتها
+            for (String department : Arrays.asList("IT", "HR", "Finance")) {
                 Map<String, byte[]> departmentFiles = new HashMap<>();
                 for (String filename : source.listFiles(department)) {
                     byte[] content = source.getFile(department, filename);
@@ -34,7 +34,7 @@ public class FileSyncService {
                 filesByDepartment.put(department, departmentFiles);
             }
 
-            // مزامنة كل قسم على حدة
+
             for (Map.Entry<String, Map<String, byte[]>> entry : filesByDepartment.entrySet()) {
                 target.syncFiles(entry.getValue(), entry.getKey());
             }
